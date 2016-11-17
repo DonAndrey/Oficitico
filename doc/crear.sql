@@ -1,6 +1,6 @@
 CREATE TABLE users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(20),
     name varchar(70) NOT NULL,
@@ -9,11 +9,11 @@ CREATE TABLE users (
     address varchar(300) NOT NULL,
     phone varchar(20),
     cellphone varchar(20) NOT NULL,
-    picture VARCHAR(300) NOT NULL,
+    picture VARCHAR(300),
     x DOUBLE,
 	y DOUBLE,
-    state INT(1) NOT NULL,
-    UNIQUE(email)
+    state INT(1),
+    UNIQUE(username)
 );
 
 CREATE TABLE activities (

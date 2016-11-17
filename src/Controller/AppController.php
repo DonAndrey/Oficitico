@@ -44,8 +44,8 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Articles',
-                'action' => 'index'
+                'controller' => 'Pages',
+                'action' => 'home'
             ],
             'logoutRedirect' => [
                 'controller' => 'Pages',
@@ -73,5 +73,16 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function isAuthorized($user)
+    {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 1) {
+            return true;
+        }
+
+        // Default deny
+        return false;
     }
 }

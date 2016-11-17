@@ -58,7 +58,32 @@ $cakeDescription = 'Oficitico: Home';
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo"><?= $this->Html->image('home/logo.png', ['alt' => 'Logo']);?></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/users/login">INGRESE</a></li>
+        <li>
+             <?php
+                    if($this->request->session()->read('Auth.User'))
+                    {
+                      echo $this->Html->link('PERFIL', ['controller'=>'users', 'action'=>'view/'.$this->request->session()->read('Auth.User.id')]);
+                    }
+                    else
+                    {
+                      echo $this->Html->link('INGRESE', ['controller'=>'users', 'action'=>'login']);
+                    }
+
+             ?>
+
+
+        </li>
+
+        <li>
+          <?php
+          
+            if($this->request->session()->read('Auth.User'))
+            {
+              echo $this->Html->link('LOGOUT', ['controller'=>'users', 'action'=>'logout']);
+            }
+          ?>
+        </li>
+
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -77,7 +102,7 @@ $cakeDescription = 'Oficitico: Home';
           <h5 class="header col s12 light">Anunciar tus servicios nunca antes fue tan fácil</h5>
         </div>
         <div class="row center">
-          <?= $this->Html->link('Registro', 'users/add', ['id'=>"download-button", 'class'=>"btn-large waves-effect waves-light teal lighten-1"]);?>
+          <?= $this->Html->link('Registro', ['controller'=>'users', 'action'=>'add'],['id'=>"download-button", 'class'=>"btn-large waves-effect waves-light teal lighten-1"]);?>
         </div>
         <br><br>
 
@@ -97,7 +122,7 @@ $cakeDescription = 'Oficitico: Home';
             <h2 class="center brown-text"><i class="material-icons">Anuncie</i></h2>
             <h5 class="center">Anuncie los servicios que ofrece</h5>
 
-            <p class="light">Con Oficitico podés anunciar cualquier servicio que brindes como parte de tu oficio, con tan solo <a href="/users/add">registrarte</a>.</p>
+            <p class="light">Con Oficitico podés anunciar cualquier servicio que brindes como parte de tu oficio, con tan solo <?= $this->Html->link('registrate',['controller'=>'users', 'action'=>'add']);?>.</p>
           </div>
         </div>
 

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="input-field col s12">
                 
-                 <?= $this->Form->input('email', ['class'=>'validate', 'label'=> 'Correo' ,'templates' => [
+                 <?= $this->Form->input('username', ['class'=>'validate', 'label'=> 'Correo' ,'templates' => [
                                          'inputContainer' => '<div class="input text required"><i class="material-icons prefix">account_circle</i> {{content}} </div>'
     ]                                    ]); ?>
                 

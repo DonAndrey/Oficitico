@@ -58,10 +58,10 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->email('username')
+            ->requirePresence('username', 'create')
+            ->notEmpty('username')
+            ->add('username', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->requirePresence('password', 'create')
@@ -92,9 +92,6 @@ class UsersTable extends Table
             ->requirePresence('cellphone', 'create')
             ->notEmpty('cellphone');
 
-        $validator
-            ->requirePresence('picture', 'create')
-            ->notEmpty('picture');
 
         $validator
             ->numeric('x')
@@ -105,9 +102,7 @@ class UsersTable extends Table
             ->allowEmpty('y');
 
         $validator
-            ->integer('state')
-            ->requirePresence('state', 'create')
-            ->notEmpty('state');
+            ->integer('state');
 
         return $validator;
     }
